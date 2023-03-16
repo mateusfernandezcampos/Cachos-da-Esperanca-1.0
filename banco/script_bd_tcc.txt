@@ -1,0 +1,93 @@
+CREATE DATABASE bd_cachos;
+ USE bd_cachos;
+ 
+ CREATE TABLE tb_usuario
+ (
+ id_usuario int not null PRIMARY KEY AUTO_INCREMENT,
+ login_usuario VARCHAR (20) NOT null,
+ senha_usuario VARCHAR (60) NOT NULL,
+ nome_usuario VARCHAR (40) not NULL,
+ rg_usuario CHAR (12) not NULL,
+ cpf_usuario CHAR(14) NOT NULL,
+ telefone_usuario VARCHAR (16) NOT NULL,
+ cep_usuario CHAR (9) NOT NULL,
+ email_usuario VARCHAR (40) NOT NULL,
+ sexo_usuario CHAR (1) NOT null
+ );
+ /* resolver sexo
+ M masculino
+ F feminino
+ 
+ login_usuario = nome do usuario que será necessário para entrar no sistema, nao dava pra botar usuario_usuariokkkkkkkkkkkkkk
+ */
+ 
+ CREATE TABLE tb_ong
+ (
+ id_ong int not null PRIMARY KEY AUTO_INCREMENT,
+ usuario_ong VARCHAR (20) NOT null,
+ senha_ong VARCHAR (60) NOT NULL,
+ nome_ong VARCHAR (40) not NULL,
+ cnpj_ong CHAR (19) NOT NULL,
+ telefone_ong VARCHAR (16) NOT NULL,
+ cep_ong CHAR (9) NOT NULL,
+ email_ong VARCHAR (40) NOT NULL,
+ imagem_perfil_ong VARCHAR(255) NOT NULL,
+ fundacao_ong DATE NOT null
+ );
+ 
+ CREATE TABLE tb_doacao
+ (
+ id_doacao int not null PRIMARY KEY AUTO_INCREMENT,
+ cod_ong INT NOT NULL,
+ cod_usuario INT NOT NULL,
+ cm_doacao INT NOT NULL,
+ data_doacao DATE NOT NULL,
+ recebida_doacao INT,
+ tipo_cabelo VARCHAR(40) NOT NULL,
+ cor_cabelo VARCHAR(50) NOT NULL,
+ forma_doacao VARCHAR(50) NOT NULL,
+ data_recebida_doacao DATE,
+ FOREIGN KEY(cod_ong) REFERENCES tb_ong(id_ong),
+ FOREIGN KEY(cod_usuario) REFERENCES tb_usuario(id_usuario)
+ );
+  /* linguagem recebida_doacao
+	2 - recebida
+	1 - nao recebida
+	0 - pendente
+ */
+ 
+ 
+ CREATE TABLE tb_peruca
+ (
+ id_peruca int not null PRIMARY KEY AUTO_INCREMENT,
+ cod_usuario INT NOT NULL,
+ cod_ong INT NOT NULL,
+ status_peruca INT,
+ laudo_peruca VARCHAR(255) NOT NULL,
+ hospital_peruca VARCHAR(90) NOT NULL,
+ data_requisicao DATE NOT NULL,
+ data_enviada DATE,
+ data_recebida DATE,
+ descricao_peruca VARCHAR (200) NOT NULL,
+ FOREIGN KEY(cod_ong) REFERENCES tb_ong(id_ong),
+ FOREIGN KEY(cod_usuario) REFERENCES tb_usuario(id_usuario)
+ );
+ /* lingugagem de status_peruca
+   0- Pedido pendente
+   1- Pedido de peruca negada pela ong
+   2- Pedido de peruca recebido
+   3- Peruca sendo confeccionada
+   4- Peruca enviada ao usuário
+   5- Peruca recebida pelo usuario
+ */
+
+
+insert into tb_ong
+  (usuario_ong,email_ong,senha_ong,nome_ong,cnpj_ong,telefone_ong,cep_ong,imagem_perfil_ong,fundacao_ong) 
+  values 
+  ('ong1','novosfios@gmail.com','c2VuaGExMjM=','Novos Fios','123.555.333/0001-78','(17)99203-1234','1234-567','ong1.png','2004-03-13');
+  
+insert into tb_ong
+  (usuario_ong,email_ong,senha_ong,nome_ong,cnpj_ong,telefone_ong,cep_ong,imagem_perfil_ong,fundacao_ong) 
+  values 
+  ('ong2','salvaperuca@gmail.com','c2VuaGE0NTY=','Salva Perucas','321.444.111/0001-11','(17)3456-1234','4321-000','ong2.png','2009-10-24');

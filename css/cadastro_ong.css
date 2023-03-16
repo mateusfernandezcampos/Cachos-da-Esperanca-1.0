@@ -1,0 +1,52 @@
+html,
+
+body {
+  padding-top: 2%;
+  background-color: #395082;
+}
+
+.cadastro {
+  background-color: #fce6e8;
+  height: 100%;
+}
+
+.row {
+  display: flex; /* equal height of the children */
+}
+
+.col {
+  flex: 1; /* additionally, equal width */
+  padding: 1em;
+}
+
+.imglogo{
+  width: 100%;
+}
+
+.form_esquerda{
+  background-color: #fce6e8;
+}
+
+.form_direita{
+  background-color: #A3B1CF;
+}
+
+.cadastrar{
+  color: #395082;
+  font-size: 60px;
+}
+
+.formulario{
+  max-width: 70%;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+
+
+
+
+
+
+
+

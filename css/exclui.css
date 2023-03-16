@@ -1,0 +1,38 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: #ff0000;
+}
+
+.exclusao {
+  align-items: center;
+  width: 70%;
+  height: 100%;
+  background-color: #e1c7c9;
+  white-space: nowrap;
+}
+
+.h1{
+  color: #3f0909;
+  font-size: 60px;
+}
+
+.txt{
+  font-size: 20px;
+}
+
+.aviso{
+  color: red;
+}
+
+.btn{
+  width: 200px;
+}
+
+
